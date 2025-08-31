@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exchange Balance - Cash Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0F0F0F;
+      color: #F0F0E0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+      width: 100%;
+    }
+    .card {
+      background-color: #1A1A1A;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 20px;
+      margin: 10px 0;
+      width: 90%;
+      max-width: 450px;
+    }
+    img { margin-bottom: 15px; width: 80px; height: auto; display: block; margin-left: auto; margin-right: auto; }
+    h1 { margin-bottom: 15px; font-size: 1.5em; text-align: center; }
+    label { display: block; margin-top: 15px; margin-bottom: 5px; }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #333333;
+      background: #F0F0E0;
+      color: #0F0F0F;
+    }
+    button {
+      width: 100%;
+      background-color: #2F855A;
+      color: #F0F0E0;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  
+<div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+  <img src="https://www2.0zz0.com/2025/05/15/17/364148462.png" alt="Exchange Icon" style="width: 50px; height: 50px; margin-right: 10px;">
+  <span style="font-size: 1.5em; color: #F0F0E0;">Exchange</span>
+</div>
+
+  
+  <div class="card">
+    <label for="fromWallet">From Wallet</label>
+    <select id="fromWallet">
+      <option>USD</option>
+      <option>SYP</option>
+      <option>TRY</option>
+      <option>USDT</option>
+    </select>
+
+    <label for="toWallet">To Wallet</label>
+    <select id="toWallet">
+      <option>USD</option>
+      <option>SYP</option>
+      <option>TRY</option>
+      <option>USDT</option>
+    </select>
+
+    <label for="amount">Amount to Exchange</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <p>Exchange Rate: 1 USD = 3,000 SYP</p>
+
+    <button>Confirm Exchange</button>
+  </div>
+</body>
+</html>

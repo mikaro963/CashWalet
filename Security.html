@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Security - Cash Wallet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: #0F0F0F; color: #F0F0E0;  background: #0F0F0F !important; color: #F0F0E0 !important; }
+  .dashboard { padding: 20px; max-width: 600px; margin: auto; }
+  .menu-button { width: 100%; margin-bottom: 10px; background: #2F855A; color: #fff; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; }
+  
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+  }
+  .modal-content {
+  background: #1A1A1A;
+  max-width: 80%;
+  width: 100%;
+  margin: 0 10%;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  position: relative;
+ max-width: 400px; width: 90%; margin: auto; \}
+  .close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; color: #fff; font-size: 1.2rem; }
+
+  .input-group { margin-bottom: 10px; }
+  input { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #333; background: #0D1F1C; color: #F0F0E0;  background: #F0F0E0 !important; color: #0F0F0F !important; }
+  button.action-btn {
+  width: 60%;
+  display: block;
+  margin: 10px auto 0 auto;
+  background: #2F855A;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+  button.action-btn:hover { background: #3D9E6F; }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+</head>
+<body>
+
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <img src="https://www2.0zz0.com/2025/05/15/17/320161114.png" alt="Security Icon" style="width: 50px; height: 50px;">
+</div>
+
+<div class="dashboard">
+  <button class="menu-button" onclick="openModal('emailModal')">Update Email</button>
+  <button class="menu-button" onclick="openModal('phoneModal')">Update Phone Number</button>
+  <button class="menu-button" onclick="openModal('passwordModal')">Update Password</button>
+  <button class="menu-button" onclick="openModal('twoStepModal')">Two-Step Verification</button>
+</div>
+
+<!-- Email Modal -->
+<div id="emailModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('emailModal')">&times;</span>
+    <h2>Update Email</h2>
+    <div class="input-group"><input type="email" placeholder="New Email"></div>
+    <div class="input-group"><input type="email" placeholder="Confirm Email"></div>
+    <div class="input-group"><input type="text" placeholder="Verification Code"></div>
+    <button class="action-btn" onclick="alert('Verification code resent!')">Resend Code</button>
+    <button class="action-btn">Save Email</button>
+  </div>
+</div>
+
+<!-- Phone Modal -->
+<div id="phoneModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('phoneModal')">&times;</span>
+    <h2>Update Phone Number</h2>
+    <div class="input-group"><input type="tel" placeholder="Phone Number"></div>
+    <div class="input-group"><input type="text" placeholder="Verification Code"></div>
+    <div class="input-group"><button class="action-btn">Resend Code</button></div>
+    <div class="input-group"><button class="action-btn">Save Phone</button></div>
+  </div>
+</div>
+
+<!-- Password Modal -->
+<div id="passwordModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('passwordModal')">&times;</span>
+    <h2>Update Password</h2>
+    <div class="input-group"><input type="password" placeholder="Current Password"></div>
+    <div class="input-group"><input type="password" placeholder="New Password"></div>
+    <div class="input-group"><input type="password" placeholder="Confirm New Password"></div>
+    <button class="action-btn">Save Password</button>
+  </div>
+</div>
+
+<!-- Two-Step Verification Modal -->
+<div id="twoStepModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('twoStepModal')">&times;</span>
+    <h2>Two-Step Verification</h2>
+    <div class="input-group">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JBSWY3DPEHPK3PXP" alt="QR Code" style="display: block; margin: 0 auto 10px auto;">
+    </div>
+    <div class="input-group" style="display: flex; gap: 10px;">
+      <input type="text" value="JBSWY3DPEHPK3PXP" id="secretKeyField" readonly style="flex: 1;">
+      <button style="
+  background: #2F855A;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+" onmouseover="
+  this.style.background='#3D9E6F';
+" onmouseout="this.style.background='#2F855A';" onclick="copySecretKey()">Copy</button>
+    </div>
+    <div class="input-group"><input type="text" placeholder="Enter 6-digit Code"></div>
+    <button style="
+  background: #2F855A;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+" onmouseover="
+  this.style.background='#3D9E6F';
+" onmouseout="this.style.background='#2F855A';">Verify</button>
+  </div>
+</div>
+
+<script>
+function copySecretKey() {
+  const keyField = document.getElementById('secretKeyField');
+  keyField.select();
+  keyField.setSelectionRange(0, 99999);
+  try {
+    document.execCommand('copy');
+    alert('Secret Key Copied!');
+  } catch (err) {
+    alert('Failed to copy text.');
+  }
+}
+</script>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var input = document.querySelector('#phoneModal input[type="tel"]');
+  if (input) {
+    window.intlTelInput(input, {
+      initialCountry: "auto",
+      geoIpLookup: function(success, failure) {
+        fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE')
+          .then(function(resp) { return resp.json(); })
+          .then(function(data) { success(data.country); })
+          .catch(function() { success("us"); });
+      },
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+  }
+});
+</script>
+
+</body>
+</html>

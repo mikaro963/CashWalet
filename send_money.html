@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Receive Money - Cash Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0F0F0F;
+      color: #F0F0E0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+      width: 100%;
+    }
+    .card {
+      background-color: #1A1A1A;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 20px;
+      margin: 10px 0;
+      width: 90%;
+      max-width: 450px;
+    }
+    img { margin: 15px auto; display: block; width: 150px; height: auto; }
+    h1 { margin-bottom: 15px; font-size: 1.5em; text-align: center; }
+    label { display: block; margin-top: 15px; margin-bottom: 5px; }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #333333;
+      background: #F0F0E0;
+      color: #0F0F0F;
+    }
+    button {
+      width: 100%;
+      background-color: #2F855A;
+      color: #F0F0E0;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  
+
+<div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+  <img src="https://www2.0zz0.com/2025/05/15/17/472284374.png" alt="Send Icon" style="width: 50px; height: 50px; margin-right: 10px;">
+  <span style="font-size: 1.5em; color: #F0F0E0;">Send</span>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+  <label style='display:block; margin-bottom:5px;'>From Wallet</label>
+  <select id="walletSelect" style="width: 100%; margin-bottom: 10px;">
+    <option value="">Select Wallet</option>
+    <option value="usdt">USDT</option>
+    <option value="usd">USD</option>
+    <option value="syp">SYP</option>
+    <option value="try">TRY</option>
+  </select>
+
+  <label style='display:block; margin-bottom:5px;'>Send Method</label>
+  <select id="methodSelect" style="width: 100%; margin-bottom: 10px;">
+    <option value="">Select Method</option>
+    <option value="usdt_wallet">USDT Wallet</option>
+    <option value="sham_cash">Sham Cash</option>
+    <option value="account_id">Account ID</option>
+    <option value="office_pickup">Office Pickup</option>
+  </select>
+
+  <div id="networkSection" style="display: none;">
+    <label style='display:block; margin-bottom:5px;'>Select Network</label>
+    <select id="networkSelect" style="width: 100%; margin-bottom: 10px;">
+      <option value="">Select Network</option>
+      <option value="BEP20">BEP20</option>
+      <option value="TRC20">TRC20</option>
+      <option value="ERC20">ERC20</option>
+    </select>
+  </div>
+
+  <div id="formContainer" style="margin-top: 10px;"></div>
+</div>
+
+<script>
+  const walletSelect = document.getElementById('walletSelect');
+  const methodSelect = document.getElementById('methodSelect');
+  const networkSelect = document.getElementById('networkSelect');
+  const networkSection = document.getElementById('networkSection');
+  const formContainer = document.getElementById('formContainer');
+
+  walletSelect.addEventListener('change', checkSelections);
+  methodSelect.addEventListener('change', checkSelections);
+  networkSelect.addEventListener('change', showForm);
+
+  function checkSelections() {
+    formContainer.innerHTML = '';
+    if (walletSelect.value === 'usdt' && methodSelect.value === 'usdt_wallet') {
+      networkSection.style.display = 'block';
+    } else {
+      networkSection.style.display = 'none';
+      showForm();
+    }
+  }
+
+  function showForm() {
+    formContainer.innerHTML = '';
+    if (walletSelect.value === 'usdt' && methodSelect.value === 'usdt_wallet' && networkSelect.value) {
+      formContainer.innerHTML = `
+        <input type="text" placeholder="Wallet Address (${networkSelect.value})" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Amount" style="width: 100%; margin-bottom: 10px;" />
+        <button style="width: 100%;">Send</button>
+      `;
+    } else if (['usd', 'syp', 'try'].includes(walletSelect.value) && methodSelect.value === 'sham_cash') {
+      formContainer.innerHTML = `
+        <input type="text" placeholder="First Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Last Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Phone Number" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Wallet Address" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Amount" style="width: 100%; margin-bottom: 10px;" />
+        <button style="width: 100%;">Send</button>
+      `;
+    } else if (['usd', 'syp', 'try', 'usdt'].includes(walletSelect.value) && methodSelect.value === 'account_id') {
+      formContainer.innerHTML = `
+        <input type="text" placeholder="First Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Last Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Phone Number" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Account ID" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Amount" style="width: 100%; margin-bottom: 10px;" />
+        <button style="width: 100%;">Send</button>
+      `;
+    } else if (['usd', 'syp', 'try'].includes(walletSelect.value) && methodSelect.value === 'office_pickup') {
+      formContainer.innerHTML = `
+        <input type="text" placeholder="First Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Last Name" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Phone Number" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Country" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="State / Province" style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Amount" style="width: 100%; margin-bottom: 10px;" />
+        <button style="width: 100%;">Send</button>
+      `;
+    }
+  }
+</script>
