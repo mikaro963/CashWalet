@@ -1,0 +1,13 @@
+/* === NAVBAR / SIDEBAR === */
+.cw-header{
+  background:#1A1A1A;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 5px rgba(0,0,0,.5);
+}
+.menu-toggle{ font-size:28px; line-height:1; cursor:pointer; color:#F0F0E0; user-select:none; }
+.client-meta{ display:flex; align-items:center; gap:10px; }
+body{ margin-top:56px; }
+*{ -webkit-tap-highlight-color:transparent; outline:none; }
