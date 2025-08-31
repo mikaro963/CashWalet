@@ -43,3 +43,25 @@ body { margin: 0; font-family: Arial, sans-serif; background: #0F0F0F; color: #F
   box-sizing: border-box;
 }
   button.action-btn:hover { background: #3D9E6F; }
+/* ألوان عامة */
+body { margin: 0; background:#0F0F0F; color:#F0F0E0; font-family: Arial, sans-serif; }
+
+/* الشريط العلوي */
+.cw-header{
+  background:#1A1A1A;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* تحسين اللمس على الموبايل */
+*{ -webkit-tap-highlight-color: transparent; outline:none; }
+
+/* تأثير ضغط على عناصر القائمة داخل السايدبار */
+#wideSidebar div[style*="cursor: pointer;"]:active:not(#closeSidebar){
+  box-shadow:0 0 8px #2F855A;
+  border-radius:6px;
+  transition: box-shadow .2s ease-in-out;
+}
