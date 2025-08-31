@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - Cash Wallet</title>
+
+
+    <link rel="stylesheet" href="css/profile.css">
+    <script defer src="js/profile.js"></script>
+</head>
+<body>
+<div class="card">
+    <img src="https://www2.0zz0.com/2025/05/15/17/988707202.png" alt="Cash Wallet Logo">
+    <h2>Profile</h2>
+    <p>John Doe</p>
+    <p>
+<div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 15px;">
+  <span style="color: #F0F0E0;">
+<div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 15px;">
+  <span style="color: #F0F0E0;">Account ID:</span>
+  <span id="accountId" style="padding: 4px 8px; border: 1px solid #2F855A; border-radius: 4px; background: #1A1A1A; color: #F0F0E0;">123456</span>
+  <button onclick="copyAccountId()" style="width: 40px; height: 30px; padding: 0; border-radius: 4px; background: #2F855A; color: white; border: none; cursor: pointer; margin-top: -4px;">Copy</button>
+</div>
+<div id="copyFeedback" style="color: lime; margin-top: 5px; display: none; text-align: center;">Copied!</div>
+
+</div>
+</p>
+
+    <div class="toggle-container">
+        <span>US Dollar</span>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="toggle-container">
+        <span>Tether (USDT)</span>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="toggle-container">
+        <span>Syrian Pound (SYP)</span>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="toggle-container">
+        <span>Turkish Lira (TRY)</span>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <button style="margin-top: 10px; width: 100%; background-color: #2F855A; color: #F0F0E0; border: none; border-radius: 8px; padding: 12px; cursor: pointer;">Save Changes</button>
+</div>
+
+
+
+</body>
+</html>

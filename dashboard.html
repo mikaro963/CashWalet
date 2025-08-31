@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>NeoWallet - Client Dashboard</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script defer src="js/dashboard.js"></script>
+</head>
+<body>
+<div id="wideSidebar" style="position: fixed; top: 0; left: 0; width: 300px; height: 100%; background: #1A1A1A; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.5); transition: transform 0.3s ease; z-index: 1000; transform: translateX(-100%);">
+<div id="closeSidebar" style="text-align: right; margin-bottom: 20px; cursor: pointer;">✖</div>
+<div style="margin-bottom: 15px; color: #A0AEC0;">
+<strong>Username</strong><br/>
+</div>
+<div onclick="window.location.href='dashboard.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/17/567955419.png" style="vertical-align: middle; margin-right: 5px;"/> Dashboard</div>
+<div onclick="window.location.href='profile.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/17/988707202.png" style="vertical-align: middle; margin-right: 5px;"/> Profile</div>
+<div onclick="window.location.href='Security.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/17/320161114.png" style="vertical-align: middle; margin-right: 5px;"/> Security</div><div onclick="window.location.href='transactions.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/17/662777686.png" style="vertical-align: middle; margin-right: 5px;"/> Transactions</div>
+<div onclick="window.location.href='messages.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/16/20/719876231.png" style="vertical-align: middle; margin-right: 5px;"/> Messages</div>
+<div onclick="window.location.href='dashboard.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/16/20/709084121.png" style="vertical-align: middle; margin-right: 5px;"/> Investments</div>
+<div onclick="window.location.href='dashboard.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/16/20/247635510.png" style="vertical-align: middle; margin-right: 5px;"/> Card</div>
+<div onclick="window.location.href='gifts.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/16/20/342154890.png" style="vertical-align: middle; margin-right: 5px;"/> Gifts</div>
+<div onclick="window.location.href='../Front/cash_wallet_front.html'" style="padding: 10px; color: white; cursor: pointer;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/17/821609761.png" style="vertical-align: middle; margin-right: 5px;"/> Logout</div>
+<div onclick="window.location.href='mailto:info@cashwallet.com'" style="padding: 10px; color: white; cursor: pointer; border-top: 1px solid #25633B; margin-top: 10px;; cursor: pointer;; cursor: pointer;"><img height="16" src="https://www2.0zz0.com/2025/05/15/22/408377664.png" style="vertical-align: middle; margin-right: 5px;"/> Customer Support</div>
+</div>
+<div id="sidebarBackdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;"></div>
+<header>
+<div class="menu-toggle" id="menuToggle" style="cursor: pointer;">
+<img alt="Menu" src="https://www2.0zz0.com/2025/05/15/17/561812913.png" style="width: 40px; height: 40px; margin: 5px; display: inline-block;"/>
+</div>
+<div class="client-meta">
+<div><img alt="Cash Wallet Logo" height="41" src="https://www2.0zz0.com/2025/05/15/22/270570621.png"/></div>
+<div></div>
+</div>
+</header>
+<div class="dashboard">
+<p>Manage your wallets and transactions below.</p>
+<div class="actions">
+<button class="action-btn" onclick="window.location.href='send_money.html'" style="; cursor: pointer;; cursor: pointer;"><img alt="" src="https://www2.0zz0.com/2025/05/15/17/472284374.png"/> Send</button>
+<button class="action-btn" onclick="window.location.href='exchange.html'" style="; cursor: pointer;"><img alt="" src="https://www2.0zz0.com/2025/05/15/17/364148462.png"/> Exchange</button>
+<button class="action-btn" onclick="window.location.href='add_funds.html'" style="; cursor: pointer;; cursor: pointer;"><img alt="" src="https://www2.0zz0.com/2025/05/15/17/745285613.png"/> Add Funds</button>
+</div>
+<div class="wallets">
+<div class="wallet-card">
+<img alt="USD" src="https://www2.0zz0.com/2025/05/15/20/141971014.png"/>
+<h3>US Dollar (USD)</h3>
+<p>1,250.00 USD</p>
+</div>
+<div class="wallet-card">
+<img alt="USDT" src="https://www2.0zz0.com/2025/05/15/20/719481459.png"/>
+<h3>Tether (USDT)</h3>
+<p>2,500.00 USDT</p>
+</div>
+<div class="wallet-card">
+<img alt="SYP" src="https://www2.0zz0.com/2025/05/15/20/932768846.png"/>
+<h3>Syrian Pound (SYP)</h3>
+<p>1,500,000.00 SYP</p>
+</div>
+<div class="wallet-card">
+<img alt="TRY" src="https://www2.0zz0.com/2025/05/15/20/220730300.png"/>
+<h3>Turkish Lira (TRY)</h3>
+<p>15,000.00 TRY</p>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

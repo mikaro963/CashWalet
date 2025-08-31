@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Receive Money - Cash Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+    <link rel="stylesheet" href="css/send_money.css">
+    <script defer src="js/send_money.js"></script>
+</head>
+<body>
+  
+
+<div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+  <img src="https://www2.0zz0.com/2025/05/15/17/472284374.png" alt="Send Icon" style="width: 50px; height: 50px; margin-right: 10px;">
+  <span style="font-size: 1.5em; color: #F0F0E0;">Send</span>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+  <label style='display:block; margin-bottom:5px;'>From Wallet</label>
+  <select id="walletSelect" style="width: 100%; margin-bottom: 10px;">
+    <option value="">Select Wallet</option>
+    <option value="usdt">USDT</option>
+    <option value="usd">USD</option>
+    <option value="syp">SYP</option>
+    <option value="try">TRY</option>
+  </select>
+
+  <label style='display:block; margin-bottom:5px;'>Send Method</label>
+  <select id="methodSelect" style="width: 100%; margin-bottom: 10px;">
+    <option value="">Select Method</option>
+    <option value="usdt_wallet">USDT Wallet</option>
+    <option value="sham_cash">Sham Cash</option>
+    <option value="account_id">Account ID</option>
+    <option value="office_pickup">Office Pickup</option>
+  </select>
+
+  <div id="networkSection" style="display: none;">
+    <label style='display:block; margin-bottom:5px;'>Select Network</label>
+    <select id="networkSelect" style="width: 100%; margin-bottom: 10px;">
+      <option value="">Select Network</option>
+      <option value="BEP20">BEP20</option>
+      <option value="TRC20">TRC20</option>
+      <option value="ERC20">ERC20</option>
+    </select>
+  </div>
+
+  <div id="formContainer" style="margin-top: 10px;"></div>
+</div>
+
+

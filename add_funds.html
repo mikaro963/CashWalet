@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Funds - Cash Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+
+
+    <link rel="stylesheet" href="css/add_funds.css">
+    <script defer src="js/add_funds.js"></script>
+</head>
+<body>
+  
+<div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;"><img src="https://www2.0zz0.com/2025/05/15/17/745285613.png" alt="Add Funds Icon" style="width: 50px; height: 50px; margin-right: 10px;"><span style="font-size: 1.5em; color: #F0F0E0;">Add Funds</span></div>
+  <div class="card">
+    <label>To Wallet</label>
+    <select id="toWallet" onchange="updateForm()">
+      <option value="">Select Wallet</option>
+      <option>USD</option>
+      <option>SYP</option>
+      <option>TRY</option>
+      <option>USDT</option>
+    </select>
+
+    <label>Receive Method</label>
+    <select id="receiveMethod" onchange="updateForm()">
+      <option value="">Select Method</option>
+      <option>Sham Cash</option>
+      <option>USDT Wallet</option>
+      <option>Office Pickup</option>
+      <option>Visa / Master</option>
+    </select>
+
+    <div id="detailsSection" class="hidden"></div>
+<div style='margin-top: 20px;'>
+  
+</div>
+
+  </div>
+
+  
+
+</body>
+</html>
