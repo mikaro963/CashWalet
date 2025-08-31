@@ -99,7 +99,50 @@
 " onmouseout="this.style.background='#2F855A';">Verify</button>
   </div>
 </div>
+<!-- Sidebar (wide) -->
+<div id="wideSidebar" style="position: fixed; top: 0; left: 0; width: 300px; height: 100%; background: #1A1A1A; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.5); transition: transform 0.3s ease; z-index: 1000; transform: translateX(-100%);">
+  <div id="closeSidebar" style="text-align: right; margin-bottom: 20px; cursor: pointer;">✖</div>
 
+  <div style="margin-bottom: 15px; color: #A0AEC0;">
+    <strong>Username</strong><br/>
+  </div>
+
+  <!-- الروابط -->
+  <div onclick="window.location.href='dashboard.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/15/17/567955419.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Dashboard
+  </div>
+  <div onclick="window.location.href='profile.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/15/17/988707202.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Profile
+  </div>
+  <div onclick="window.location.href='Security.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/15/17/320161114.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Security
+  </div>
+  <div onclick="window.location.href='transactions.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/15/17/662777686.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Transactions
+  </div>
+  <div onclick="window.location.href='messages.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/16/20/719876231.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Messages
+  </div>
+  <div onclick="window.location.href='gifts.html'" style="padding: 10px; color: white; cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/16/20/342154890.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Gifts
+  </div>
+  <div onclick="window.location.href='mailto:info@cashwallet.com'" style="padding: 10px; color: white; cursor: pointer; border-top: 1px solid #25633B; margin-top: 10px;">
+    <img src="https://www2.0zz0.com/2025/05/15/22/408377664.png" height="16" style="vertical-align: middle; margin-right: 5px;"/> Customer Support
+  </div>
+</div>
+
+<!-- خلفية القائمة -->
+<div id="sidebarBackdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;"></div>
+
+<!-- Header / Navbar -->
+<header class="cw-header">
+  <div class="menu-toggle" id="menuToggle" style="cursor: pointer;">
+    <img src="https://www2.0zz0.com/2025/05/15/17/561812913.png" alt="Menu" style="width: 40px; height: 40px; margin: 5px; display: inline-block;"/>
+  </div>
+  <div class="client-meta">
+    <div><img src="https://www2.0zz0.com/2025/05/15/22/270570621.png" alt="Cash Wallet Logo" height="41"/></div>
+  </div>
+</header>
 
 
 
