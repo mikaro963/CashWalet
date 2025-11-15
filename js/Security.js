@@ -23,7 +23,7 @@ function closeModal(id) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // === Phone intl-tel-input (كما هو) ===
+  // Phone input intl-tel-input
   var input = document.querySelector('#phoneModal input[type="tel"]');
   if (input && window.intlTelInput) {
     window.intlTelInput(input, {
@@ -38,27 +38,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // === Password modal logic (eyes + conditions) ===
-  const passwordModal = document.getElementById('passwordModal');
+  // ===== Password modal logic (conditions + eye toggles) =====
+  var passwordModal = document.getElementById('passwordModal');
   if (!passwordModal) return;
 
-  const currentPasswordInput  = document.getElementById('current_password');
-  const newPasswordInput      = document.getElementById('new_password');
-  const confirmPasswordInput  = document.getElementById('new_password_confirmation');
+  var newPasswordInput     = document.getElementById('new_password');
+  var confirmPasswordInput = document.getElementById('new_password_confirmation');
 
   if (!newPasswordInput || !confirmPasswordInput) return;
 
-  // عيون إظهار / إخفاء
-  const toggles = passwordModal.querySelectorAll('.password-toggle');
-  toggles.forEach(btn => {
-    const targetId = btn.getAttribute('data-target');
-    const inputEl  = document.getElementById(targetId);
+  // Eye toggles
+  var toggles = passwordModal.querySelectorAll('.password-toggle');
+  toggles.forEach(function(btn) {
+    var targetId = btn.getAttribute('data-target');
+    var inputEl = document.getElementById(targetId);
     if (!inputEl) return;
 
-    const eyeOpen   = btn.querySelector('.eye-open');
-    const eyeClosed = btn.querySelector('.eye-closed');
+    var eyeOpen   = btn.querySelector('.eye-open');
+    var eyeClosed = btn.querySelector('.eye-closed');
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {
       if (inputEl.type === 'password') {
         inputEl.type = 'text';
         if (eyeOpen)   eyeOpen.style.display   = 'none';
@@ -71,22 +70,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // عناصر الشروط
-  const progressContainer = document.getElementById('pw-progress-container');
-  const progressBar       = document.getElementById('pw-progress');
-  const strengthText      = document.getElementById('pw-strength-text');
-  const reqBox            = document.getElementById('pw-requirements');
+  // Requirements + strength
+  var progressContainer = document.getElementById('pw-progress-container');
+  var progressBar       = document.getElementById('pw-progress');
+  var strengthText      = document.getElementById('pw-strength-text');
+  var reqBox            = document.getElementById('pw-requirements');
 
-  const reqLength = document.getElementById('pw-req-length');
-  const reqUpper  = document.getElementById('pw-req-upper');
-  const reqLower  = document.getElementById('pw-req-lower');
-  const reqNumber = document.getElementById('pw-req-number');
+  var reqLength = document.getElementById('pw-req-length');
+  var reqUpper  = document.getElementById('pw-req-upper');
+  var reqLower  = document.getElementById('pw-req-lower');
+  var reqNumber = document.getElementById('pw-req-number');
 
-  const matchText = document.getElementById('pw-match-text');
+  var matchText = document.getElementById('pw-match-text');
 
   function setReq(li, ok) {
     if (!li) return;
-    const icon = li.querySelector('.req-icon');
+    var icon = li.querySelector('.req-icon');
     if (icon) icon.textContent = ok ? '✅' : '❌';
     li.style.color = ok ? '#22c55e' : '#dc2626';
   }
@@ -101,9 +100,101 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function updatePasswordStrength() {
-    const pw = newPasswordInput.value || '';
-    const c  = checkPassword(pw);
+    var pw = newPasswordInput.value || '';
+    var checks = checkPassword(pw);
 
+    setReq(reqLength, checks.length);
+    setReq(reqUpper,  checks.upper);
+    setReq(reqLower,  checks.lower);
+    setReq(reqNumber, checks.number);
+
+    var score = 0;
+    if (checks.length) score++;
+    if (checks.upper)  score++;
+    if (checks.lower)  score++;
+    if (checks.number) score++;
+
+    if (progressContainer && progressBar) {
+      if (!pw) {
+        progressContainer.style.display = 'none';
+        progressBar.style.width = '0%';
+      } else {
+        progressContainer.style.display = 'block';
+        var percent = (score / 4) * 100;
+        progressBar.style.width = percent + '%';
+
+        var color;
+        if (score <= 1)      color = '#dc2626';   // Weak
+        else if (score === 2) color = '#f59e0b'; // Fair
+        else if (score === 3) color = '#eab308'; // Good
+        else                  color = '#22c55e'; // Strong
+
+        progressBar.style.backgroundColor = color;
+      }
+    }
+
+    if (strengthText) {
+      if (!pw) {
+        strengthText.style.display = 'none';
+        strengthText.textContent = '';
+      } else {
+        strengthText.style.display = 'block';
+        if (score <= 1)       strengthText.textContent = 'Weak';
+        else if (score === 2) strengthText.textContent = 'Fair';
+        else if (score === 3) strengthText.textContent = 'Good';
+        else                  strengthText.textContent = 'Strong';
+      }
+    }
+
+    if (reqBox) {
+      reqBox.style.display = pw ? 'block' : 'none';
+    }
+
+    updatePasswordMatch();
+  }
+
+  function updatePasswordMatch() {
+    if (!matchText) return;
+    var pw  = newPasswordInput.value || '';
+    var cpw = confirmPasswordInput.value || '';
+
+    if (!cpw) {
+      matchText.textContent = '';
+      matchText.style.color = '#a0aec0';
+      return;
+    }
+
+    if (pw === cpw) {
+      matchText.textContent = 'Passwords match';
+      matchText.style.color = '#22c55e';
+    } else {
+      matchText.textContent = 'Passwords do not match';
+      matchText.style.color = '#dc2626';
+    }
+  }
+
+  newPasswordInput.addEventListener('input', function() {
+    updatePasswordStrength();
+  });
+
+  confirmPasswordInput.addEventListener('input', function() {
+    updatePasswordMatch();
+  });
+
+  newPasswordInput.addEventListener('focus', function() {
+    if (reqBox && newPasswordInput.value)            reqBox.style.display            = 'block';
+    if (progressContainer && newPasswordInput.value) progressContainer.style.display = 'block';
+    if (strengthText && newPasswordInput.value)      strengthText.style.display      = 'block';
+  });
+
+  confirmPasswordInput.addEventListener('focus', function() {
+    if (reqBox)            reqBox.style.display            = 'none';
+    if (progressContainer) progressContainer.style.display = 'none';
+    if (strengthText)      strengthText.style.display      = 'none';
+  });
+
+  updatePasswordStrength();
+});
     setReq(reqLength, c.length);
     setReq(reqUpper,  c.upper);
     setReq(reqLower,  c.lower);
