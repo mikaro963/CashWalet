@@ -1,0 +1,132 @@
+:root{
+      --bg:#000;
+      --card:#0f1014;
+      --text:#fff;
+      --muted:#a0a0a0;
+      --red:#ff4d4f;
+      --green:#2ecc71;
+      --bar-bg:#2a2a2f;
+      --eye:#7a8590;
+    }
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic","Noto Sans",sans-serif;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      min-height:100vh;
+      padding:20px 10px;
+    }
+    .wrap{
+      width:100%;
+      max-width:420px;
+      background:transparent;
+    }
+    .field{
+      position:relative;
+      margin-bottom:16px;
+    }
+    label{
+      display:block;
+      margin-bottom:6px;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+    input{
+      width:100%;
+      background:transparent;
+      border:none;
+      border-bottom:1px solid #222;
+      padding:10px 42px 10px 0;
+      font-size:1rem;
+      color:var(--text);
+      outline:none;
+    }
+    /* eye on the left for rtl */
+    .eye-btn{
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      width:30px;
+      height:30px;
+      border:none;
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+    .eye-btn svg{
+      width:22px;
+      height:22px;
+      stroke:var(--eye);
+    }
+    /* validation block */
+    #validationArea{
+      margin-top:4px;
+    }
+    .bar{
+      display:flex;
+      gap:6px;
+      margin-bottom:6px;
+    }
+    .bar div{
+      flex:1;
+      height:5px;
+      background:var(--bar-bg);
+      border-radius:999px;
+    }
+    .bar .s1{background:#ff4d4f;}
+    .bar .s2{background:#ff8a3d;}
+    .bar .s3{background:#ffd24a;}
+    .bar .s4{background:#2ecc71;}
+    .status-text{
+      font-size:0.75rem;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .rules{
+      display:grid;
+      gap:6px;
+    }
+    .rule{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:0.78rem;
+      color:var(--muted);
+    }
+    .dot{
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      border:1.4px solid currentColor;
+      flex:0 0 13px;
+    }
+    .rule.ok{
+      color:var(--green);
+    }
+    .rule.ok .dot{
+      background:var(--green);
+      border-color:var(--green);
+    }
+    .rule.error{
+      color:var(--red);
+    }
+    .match{
+      font-size:0.78rem;
+      margin-top:3px;
+      color:var(--muted);
+    }
+    .match.ok{color:var(--green);}
+    .match.error{color:var(--red);}
+    .hidden{display:none!important;}
+
+    /* desktop tweaks */
+    @media (min-width:768px){
+      body{align-items:center;}
+      .wrap{max-width:420px;}
+    }
