@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>كلمة المرور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="field">
+      <label for="newPass">كلمة المرور الجديدة</label>
+      <input id="newPass" type="password" autocomplete="new-password" placeholder="اكتب كلمة المرور">
+      <button class="eye-btn" type="button" onclick="togglePass('newPass', this)" aria-label="إظهار أو إخفاء كلمة المرور">
+        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3l18 18"></path>
+          <path d="M10.6 10.6A2 2 0 0 0 12 14a2 2 0 0 0 1.4-.6"></path>
+          <path d="M9.88 5.08A9.53 9.53 0 0 1 12 5c7 0 11 7 11 7a16.85 16.85 0 0 1-2.24 2.88"></path>
+          <path d="M6.12 6.12A16.86 16.86 0 0 0 1 12s1.64 2.85 4.54 4.81"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="validationArea" class="hidden">
+      <div class="bar" id="strengthBar">
+        <div></div><div></div><div></div><div></div>
+      </div>
+      <div id="strengthText" class="status-text">ضعيف</div>
+      <div class="rules">
+        <div class="rule" id="rule-length"><span class="dot"></span> من ٨ إلى ١٦ حرفًا</div>
+        <div class="rule" id="rule-upper"><span class="dot"></span> حرف كبير واحد على الأقل (A-Z)</div>
+        <div class="rule" id="rule-lower"><span class="dot"></span> حرف صغير واحد على الأقل (a-z)</div>
+        <div class="rule" id="rule-number"><span class="dot"></span> رقم واحد على الأقل (0-9)</div>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:20px;">
+      <label for="confirmPass">تأكيد كلمة المرور</label>
+      <input id="confirmPass" type="password" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور">
+      <button class="eye-btn" type="button" onclick="togglePass('confirmPass', this)" aria-label="إظهار أو إخفاء كلمة المرور">
+        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3l18 18"></path>
+          <path d="M10.6 10.6A2 2 0 0 0 12 14a2 2 0 0 0 1.4-.6"></path>
+          <path d="M9.88 5.08A9.53 9.53 0 0 1 12 5c7 0 11 7 11 7a16.85 16.85 0 0 1-2.24 2.88"></path>
+          <path d="M6.12 6.12A16.86 16.86 0 0 0 1 12s1.64 2.85 4.54 4.81"></path>
+        </svg>
+      </button>
+      <div id="matchMsg" class="match"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
