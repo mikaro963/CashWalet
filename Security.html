@@ -1,61 +1,172 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>كلمة المرور</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="Security.css">
+<meta charset="UTF-8">
+<title>Security - Cash Wallet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<link rel="stylesheet" href="css/Security.css">
+<script defer src="js/Security.js"></script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="field">
-      <label for="newPass">كلمة المرور الجديدة</label>
-      <input id="newPass" type="password" autocomplete="new-password" placeholder="اكتب كلمة المرور">
-      <button class="eye-btn" type="button" onclick="togglePass('newPass', this)" aria-label="إظهار أو إخفاء كلمة المرور">
-        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
-          <circle cx="12" cy="12" r="3.5"></circle>
-        </svg>
-        <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 3l18 18"></path>
-          <path d="M10.6 10.6A2 2 0 0 0 12 14a2 2 0 0 0 1.4-.6"></path>
-          <path d="M9.88 5.08A9.53 9.53 0 0 1 12 5c7 0 11 7 11 7a16.85 16.85 0 0 1-2.24 2.88"></path>
-          <path d="M6.12 6.12A16.86 16.86 0 0 0 1 12s1.64 2.85 4.54 4.81"></path>
-        </svg>
-      </button>
-    </div>
 
-    <div id="validationArea" class="hidden">
-      <div class="bar" id="strengthBar">
-        <div></div><div></div><div></div><div></div>
-      </div>
-      <div id="strengthText" class="status-text">ضعيف</div>
-      <div class="rules">
-        <div class="rule" id="rule-length"><span class="dot"></span> من ٨ إلى ١٦ حرفًا</div>
-        <div class="rule" id="rule-upper"><span class="dot"></span> حرف كبير واحد على الأقل (A-Z)</div>
-        <div class="rule" id="rule-lower"><span class="dot"></span> حرف صغير واحد على الأقل (a-z)</div>
-        <div class="rule" id="rule-number"><span class="dot"></span> رقم واحد على الأقل (0-9)</div>
-      </div>
-    </div>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <img src="https://www2.0zz0.com/2025/05/15/17/320161114.png" 
+     alt="Security Icon" 
+     style="width:50px;height:50px;cursor:pointer;"
+     onclick="window.location.href='dashboard.html';">
+</div>
 
-    <div class="field" style="margin-top:20px;">
-      <label for="confirmPass">تأكيد كلمة المرور</label>
-      <input id="confirmPass" type="password" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور">
-      <button class="eye-btn" type="button" onclick="togglePass('confirmPass', this)" aria-label="إظهار أو إخفاء كلمة المرور">
-        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
-          <circle cx="12" cy="12" r="3.5"></circle>
-        </svg>
-        <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 3l18 18"></path>
-          <path d="M10.6 10.6A2 2 0 0 0 12 14a2 2 0 0 0 1.4-.6"></path>
-          <path d="M9.88 5.08A9.53 9.53 0 0 1 12 5c7 0 11 7 11 7a16.85 16.85 0 0 1-2.24 2.88"></path>
-          <path d="M6.12 6.12A16.86 16.86 0 0 0 1 12s1.64 2.85 4.54 4.81"></path>
-        </svg>
-      </button>
-      <div id="matchMsg" class="match"></div>
-    </div>
+<div class="dashboard">
+  <button class="menu-button" onclick="openModal('emailModal')">Update Email</button>
+  <button class="menu-button" onclick="openModal('phoneModal')">Update Phone Number</button>
+  <button class="menu-button" onclick="openModal('passwordModal')">Update Password</button>
+  <button class="menu-button" onclick="openModal('twoStepModal')">Two-Step Verification</button>
+</div>
+
+<!-- Email Modal -->
+<div id="emailModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('emailModal')">&times;</span>
+    <h2>Update Email</h2>
+    <div class="input-group"><input type="email" placeholder="New Email"></div>
+    <div class="input-group"><input type="email" placeholder="Confirm Email"></div>
+    <div class="input-group"><input type="text" placeholder="Verification Code"></div>
+    <button class="action-btn" onclick="alert('Verification code resent!')">Resend Code</button>
+    <button class="action-btn">Save Email</button>
   </div>
-  <script src="script.js"></script>
+</div>
+
+<!-- Phone Modal -->
+<div id="phoneModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('phoneModal')">&times;</span>
+    <h2>Update Phone Number</h2>
+    <div class="input-group"><input type="tel" placeholder="Phone Number"></div>
+    <div class="input-group"><input type="text" placeholder="Verification Code"></div>
+    <div class="input-group"><button class="action-btn">Resend Code</button></div>
+    <div class="input-group"><button class="action-btn">Save Phone</button></div>
+  </div>
+</div>
+
+<!-- Password Modal (معدّل فقط هنا) -->
+<div id="passwordModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('passwordModal')">&times;</span>
+    <h2>Update Password</h2>
+
+    <!-- Current Password -->
+    <div class="input-group">
+      <div class="password-wrapper">
+        <input type="password" id="current_password" placeholder="Current Password">
+        <button type="button" class="password-toggle" data-target="current_password" aria-label="Show or hide password">
+          <!-- eye open -->
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+            <circle cx="12" cy="12" r="3.5"></circle>
+          </svg>
+          <!-- eye closed -->
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M3 3l18 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- New Password -->
+    <div class="input-group">
+      <div class="password-wrapper">
+        <input type="password" id="new_password" placeholder="New Password">
+        <button type="button" class="password-toggle" data-target="new_password" aria-label="Show or hide password">
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+            <circle cx="12" cy="12" r="3.5"></circle>
+          </svg>
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M3 3l18 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Strength + rules -->
+    <div class="pw-rules-container">
+      <div id="pw-progress-container" class="pw-progress-container" style="display:none;">
+        <div id="pw-progress" class="pw-progress-bar"></div>
+      </div>
+      <div id="pw-strength-text" class="pw-strength-text" style="display:none;"></div>
+
+      <div id="pw-requirements" class="pw-req-box" style="display:none;">
+        <strong>Password requirements:</strong>
+        <ul>
+          <li id="pw-req-length"><span class="req-icon">❌</span> 8–16 characters</li>
+          <li id="pw-req-upper"><span class="req-icon">❌</span> At least one uppercase letter (A-Z)</li>
+          <li id="pw-req-lower"><span class="req-icon">❌</span> At least one lowercase letter (a-z)</li>
+          <li id="pw-req-number"><span class="req-icon">❌</span> At least one number (0-9)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Confirm New Password -->
+    <div class="input-group">
+      <div class="password-wrapper">
+        <input type="password" id="new_password_confirmation" placeholder="Confirm New Password">
+        <button type="button" class="password-toggle" data-target="new_password_confirmation" aria-label="Show or hide password">
+          <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+            <circle cx="12" cy="12" r="3.5"></circle>
+          </svg>
+          <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <path d="M3 3l18 18"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="pw-match-text" class="pw-match-text"></div>
+    </div>
+
+    <button class="action-btn">Save Password</button>
+  </div>
+</div>
+
+<!-- Two-Step Verification Modal -->
+<div id="twoStepModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('twoStepModal')">&times;</span>
+    <h2>Two-Step Verification</h2>
+    <div class="input-group">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JBSWY3DPEHPK3PXP" alt="QR Code" style="display: block; margin: 0 auto 10px auto;">
+    </div>
+    <div class="input-group" style="display: flex; gap: 10px;">
+      <input type="text" value="JBSWY3DPEHPK3PXP" id="secretKeyField" readonly style="flex: 1;">
+      <button style="
+  background: #2F855A;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+" onmouseover="
+  this.style.background='#3D9E6F';
+" onmouseout="this.style.background='#2F855A';" onclick="copySecretKey()">Copy</button>
+    </div>
+    <div class="input-group"><input type="text" placeholder="Enter 6-digit Code"></div>
+    <button style="
+  background: #2F855A;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+" onmouseover="
+  this.style.background='#3D9E6F';
+" onmouseout="this.style.background='#2F855A';">Verify</button>
+  </div>
+</div>
+
 </body>
 </html>
